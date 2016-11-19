@@ -5,7 +5,7 @@ import matplotlib.gridspec as gridspec  # for unequal plot boxes
 from linfit import linfit
 
 
-# data set for linear fitting 
+# data set for linear fitting
 
 values = np.loadtxt("vorlage.txt", skiprows=1)
 print(values)
@@ -25,7 +25,7 @@ print(u"slope = {0:0.3f} \xb1 {1:0.3f}".format(fit[0], dfit[0]))
 print(u"y-intercept = {0:0.3f} \xb1 {1:0.3}".format(fit[1], dfit[1]))
 # Open figure window for plotting data with linear fit
 fig = plt.figure(1, figsize=(8,8))
-#gs = gridspec.GridSpec(2, 1, height_ratios=[2.5, 6]) 
+#gs = gridspec.GridSpec(2, 1, height_ratios=[2.5, 6])
 
 # Bottom plot: data and fit
 ax1 = fig.add_subplot(1,1,1)
@@ -55,4 +55,5 @@ ax1.text(0.05, 0.69,    # correlation coefficient of fitted slope & y-intercept
 # Label axes
 ax1.set_xlabel(labelx)
 ax1.set_ylabel(labely)
+plt.savefig("dummy.png")
 plt.show()

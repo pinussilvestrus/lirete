@@ -14,6 +14,7 @@ Web Plotter with linreg.py
 ## Run
 
 1. Go into project folder
+2. run `npm run dev` (Unix) or `npm run windev`
 2. run `npm start`
 
 ## Testing

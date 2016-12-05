@@ -1,0 +1,31 @@
+{
+  "name": "lirete",
+  "version": "1.0.0",
+  "description": "Web Plotter with linreg.py",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "startd": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinussilvestrus/lirete.git"
+  },
+  "author": "pinussilvestrus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pinussilvestrus/lirete/issues"
+  },
+  "homepage": "https://github.com/pinussilvestrus/lirete#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "feathers": "^2.0.2",
+    "feathers-configuration": "^0.4.1",
+    "nodemon": "^1.11.0",
+    "python-shell": "^0.4.0",
+    "serve-favicon": "^2.3.2",
+    "winston": "^2.3.0"
+  }
+}

@@ -31,9 +31,10 @@ app.use(serveStatic(path.join(__dirname, 'public')));
 app.configure(services);
 
 // frontend
-/**app.get('*', function (request, response){
+app.use(serveStatic(__dirname + '/dist'));
+app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-})**/
+});
 
 // start the server
 const server = app.listen(app.get('port'));

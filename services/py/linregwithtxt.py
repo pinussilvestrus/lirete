@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec  # for unequal plot boxes
+import os as os
 from linfit import linfit
 
 
@@ -55,5 +56,10 @@ ax1.text(0.05, 0.69,    # correlation coefficient of fitted slope & y-intercept
 # Label axes
 ax1.set_xlabel(labelx)
 ax1.set_ylabel(labely)
-plt.savefig("dist/plot.png")
+
+# Save plot in file
+fileName = "dist/plot.png"
+if os.path.isfile(fileName):
+  os.remove(fileName)
+plt.savefig(fileName)
 # plt.show()

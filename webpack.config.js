@@ -44,8 +44,9 @@ var config = {
     extensions: ['', '.js', '.jsx'],
   },
   node: {
-    net: "empty",
-    fs: "empty"
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
   plugins: [
     new ExtractTextPlugin("styles.css"),

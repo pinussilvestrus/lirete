@@ -7,6 +7,7 @@ export default {
     Server.plotTable()
       .then(result => {
         console.log(result);
+        location.reload();
       })
       .catch(error => {
         console.log(error);

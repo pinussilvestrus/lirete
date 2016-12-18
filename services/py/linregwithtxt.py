@@ -8,14 +8,14 @@ from linfit import linfit
 
 # data set for linear fitting
 
-values = np.loadtxt("services/py/vorlage.txt", skiprows=1)
+values = np.loadtxt("temp/table.txt", skiprows=1)
 print(values)
 x= values[:,0]
 y= values[:,1]
 dx= values[:,2]
 dy = values[:,3]
 
-labels = np.loadtxt("services/py/vorlage.txt", dtype="str")
+labels = np.loadtxt("temp/table.txt", dtype="str")
 print(labels)
 labelx = labels[0,0]
 labely = labels[0,1]

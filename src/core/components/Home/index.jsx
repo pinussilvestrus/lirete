@@ -10,8 +10,8 @@ class Home extends React.Component {
 		super(props);
     this.state = {
       loaded: true,
-      tableHead: ["x", "y"],
-      tableBody: [ [1, 2], [3, 4] ]
+      tableHead: ["x", "y", "dx", "dy"],
+      tableBody: [ [1, 2, 0.5, 1], [3, 4, 0.5, 1], [3, 6, 0.5, 1], [4, 8, 0.5, 1] ]
     };
 	}
 

@@ -5,6 +5,16 @@ class Table extends React.Component {
     super(props);
   }
 
+  newRowUI() {
+    return (
+      <tr>
+        {this.props.head.map((cell, cellIndex) => (<td key={cellIndex}>
+          <input type="text" value={this.props.newTableRow[cellIndex]} onChange={this.props.handleOnNewTableRowElementChange.bind(null, cellIndex)}></input>
+        </td>))}
+        <td><i className="fa fa-plus-square-o" onClick={this.props.handleOnAddNewRow.bind(null)}></i></td>
+      </tr>
+    );
+  }
   headElementUi(cellIndex, cell) {
     return (
       <input  type="text" value={cell} onChange={this.props.handleOnHeadElementChange.bind(this, cellIndex)}></input>
@@ -34,6 +44,7 @@ class Table extends React.Component {
           <td><i className="fa fa-trash-o" onClick={this.props.handleOnRowDelete.bind(null, cellsIndex)}></i></td>
         </tr>
       ))}
+      {this.newRowUI()}
       </tbody>
     );
   }

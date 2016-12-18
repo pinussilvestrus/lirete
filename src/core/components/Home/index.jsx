@@ -11,7 +11,8 @@ class Home extends React.Component {
     this.state = {
       loaded: true,
       tableHead: ["x", "y", "dx", "dy"],
-      tableBody: [ [1, 2, 0.5, 1], [3, 4, 0.5, 1], [3, 6, 0.5, 1], [4, 8, 0.5, 1] ]
+      tableBody: [ [1, 2, 0.5, 1], [3, 4, 0.5, 1], [3, 6, 0.5, 1], [4, 8, 0.5, 1] ],
+      newTableRow: [1,2,3,4]
     };
 	}
 
@@ -38,6 +39,18 @@ class Home extends React.Component {
     this.setState({tableHead: stateCopy});
   }
 
+  handleNewTableRowElementChange(cellsIndex, e) {
+    let stateCopy = this.state.newTableRow;
+    stateCopy[cellsIndex] = e.target.value;
+    this.setState({newTableForm: stateCopy});
+  }
+
+  handleAddNewRow(e) {
+    let stateCopy = this.state.tableBody;
+    stateCopy.push(this.state.newTableRow);
+    this.setState({tableBody: stateCopy});
+  }
+
   handleImageNotFound(e) {
     e.target.style.display = "none";
   }
@@ -50,7 +63,10 @@ class Home extends React.Component {
           head={this.state.tableHead}
           handleOnHeadElementChange={this.handleHeadElementChange.bind(this)}
           body={this.state.tableBody}
-          handleOnRowDelete={this.handleDeleteRow.bind(this)}/>
+          handleOnRowDelete={this.handleDeleteRow.bind(this)}
+          newTableRow={this.state.newTableRow}
+          handleOnNewTableRowElementChange={this.handleNewTableRowElementChange.bind(this)}
+          handleOnAddNewRow={this.handleAddNewRow.bind(this)}/>
         <Loader loaded={this.state.loaded}>
           <button className="btn btn-success btn-large" onClick={this.handlePlot.bind(this)}>Plot</button><br></br>
           <img src="plot.png" onError={this.handleImageNotFound.bind(this)}></img>

@@ -1,7 +1,14 @@
+require('./index.scss');
 class Table extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  headElementUi(cellIndex, cell) {
+    return (
+      <input  type="text" value={cell} onChange={this.props.handleOnHeadElementChange.bind(this, cellIndex)}></input>
+    );
   }
 
   headUI() {
@@ -9,7 +16,8 @@ class Table extends React.Component {
     return (
       <thead>
       <tr>
-        {this.props.head.map((cell, cellIndex) => (<th key={cellIndex}>{cell}</th>))}
+        {this.props.head.map((cell, cellIndex) => (<th key={cellIndex}>{this.headElementUi(cellIndex, cell)}</th>))}
+        <th></th>
       </tr>
       </thead>
     );
@@ -23,6 +31,7 @@ class Table extends React.Component {
       {this.props.body.map((cells, cellsIndex) => (
         <tr key={cellsIndex}>
           {cells.map((cell, cellIndex) => (<td key={cellIndex}>{cell}</td>))}
+          <td><i className="fa fa-trash-o" onClick={this.props.handleOnRowDelete.bind(null, cellsIndex)}></i></td>
         </tr>
       ))}
       </tbody>

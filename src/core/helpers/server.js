@@ -12,6 +12,10 @@ class Server {
       headers: {
         'User-Agent': 'Request-Promise'
       },
+      body: {
+        header: table.header,
+        body: table.body
+      },
       json: true
     };
 

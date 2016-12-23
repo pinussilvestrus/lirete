@@ -4,10 +4,11 @@ import Server from '../helpers/server';
 
 export default {
   plot: (table) => {
-    Server.plotTable(table)
+    return Server.plotTable(table)
       .then(result => {
         console.log(result);
-        location.reload(); // todo: No reload, just rerending the image
+        if (result.graph) return Promise.resolve(result.graph);
+        Promise.reject("No image was rendered!");
       })
       .catch(error => {
         console.log(error);

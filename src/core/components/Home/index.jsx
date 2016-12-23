@@ -10,6 +10,7 @@ class Home extends React.Component {
 		super(props);
     this.state = {
       loaded: true,
+      plotSrc: '',
       tableHead: ["x", "y", "dx", "dy"],
       tableBody: [ [1, 2, 0.5, 1], [3, 4, 0.5, 1], [3, 6, 0.5, 1], [4, 8, 0.5, 1] ],
       newTableRow: [1,2,3,4]
@@ -24,6 +25,13 @@ class Home extends React.Component {
     Actions.plot({
       header: this.state.tableHead,
       body: this.state.tableBody
+    }).then(result => {
+      this.setState({
+        plotSrc: result,
+        loaded: true
+      });
+    }).catch(err => {
+      console.log(err);
     });
   }
 
@@ -69,7 +77,7 @@ class Home extends React.Component {
           handleOnAddNewRow={this.handleAddNewRow.bind(this)}/>
         <Loader loaded={this.state.loaded}>
           <button className="btn btn-success btn-large" onClick={this.handlePlot.bind(this)}>Plot</button><br></br>
-          <img src="plot.png" onError={this.handleImageNotFound.bind(this)}></img>
+          <img src={this.state.plotSrc} onError={this.handleImageNotFound.bind(this)}></img>
         </Loader>
 			</div>
 		);

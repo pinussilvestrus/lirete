@@ -3,19 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec  # for unequal plot boxes
 import os as os
+import sys as sys
 from linfit import linfit
-
 
 # data set for linear fitting
 
-values = np.loadtxt("temp/table.txt", skiprows=1)
+values = np.loadtxt("dist/temp/table.txt", skiprows=1)
 print(values)
 x= values[:,0]
 y= values[:,1]
 dx= values[:,2]
 dy = values[:,3]
 
-labels = np.loadtxt("temp/table.txt", dtype="str")
+labels = np.loadtxt("dist/temp/table.txt", dtype="str")
 print(labels)
 labelx = labels[0,0]
 labely = labels[0,1]
@@ -58,8 +58,12 @@ ax1.set_xlabel(labelx)
 ax1.set_ylabel(labely)
 
 # Save plot in file
-fileName = "dist/plot.png"
+
+print sys.argv
+fileName = "dist/temp/" + sys.argv[1] if len(sys.argv) > 1 else "dist/temp/plot.png"
+
 if os.path.isfile(fileName):
   os.remove(fileName)
+
 plt.savefig(fileName)
 # plt.show()

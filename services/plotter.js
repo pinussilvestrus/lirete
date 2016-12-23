@@ -8,8 +8,9 @@ module.exports = function () {
   const app = this;
 
   /** writing whole data to temp-file for better debugging/printing later on **/
-  const writeTableToFile = (tableHead, tableBody) => {
-    var  stream = fs.createWriteStream("dist/temp/table.txt");
+  const writeTableToFile = (fileName, tableHead, tableBody) => {
+
+    var  stream = fs.createWriteStream(`dist/temp/${fileName}.txt`);
     stream.once('open', function(fd) {
       // writing header
       tableHead.forEach(h => {
@@ -35,22 +36,27 @@ module.exports = function () {
   app.post('/api/plotter', (req, res) => {
     if (!req.body.header || !req.body.body) return res.status(400).json({message: "Bad Request"});
 
-    writeTableToFile(req.body.header, req.body.body);
+    let txtfileName = randomstring.generate({
+      length: 12,
+      charset: 'alphabetic'
+    });
+    writeTableToFile(txtfileName, req.body.header, req.body.body);
 
-    let fileName = randomstring.generate({
+    let pngfileName = randomstring.generate({
       length: 12,
       charset: 'alphabetic'
     });
 
     let options = {
-      args: [fileName]
+      args: [pngfileName, txtfileName]
     };
 
     PythonShell.run('services/py/linregwithtxt.py', options, (err) => {
       if (err) throw err;
       logger.info('Python script for plotting finished');
       return res.status(200).json({
-        graph: `temp/${fileName}.png`,
+        graph: `temp/${pngfileName}.png`,
+        table: `temp/${txtfileName}.txt`,
         message: "Successfully plotted graph"
       });
     });

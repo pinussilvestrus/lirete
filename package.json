@@ -20,7 +20,8 @@
     "start": "node app.js",
     "startd": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "windev": "npm run cp:index && set NODE_ENV=local&& npm run build"
+    "windev": "npm run cp:index && set NODE_ENV=local&& npm run build",
+    "rm:temp": "rm dist/temp/*.txt && rm dist/temp/*.png"
   },
   "dependencies": {
     "babel-core": "^6.2.1",

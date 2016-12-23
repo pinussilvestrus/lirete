@@ -8,14 +8,16 @@ from linfit import linfit
 
 # data set for linear fitting
 
-values = np.loadtxt("dist/temp/table.txt", skiprows=1)
+txtFileName = "dist/temp/" + sys.argv[2] + ".txt" if len(sys.argv) > 2 else "dist/temp/table.txt"
+
+values = np.loadtxt(txtFileName, skiprows=1)
 print(values)
 x= values[:,0]
 y= values[:,1]
 dx= values[:,2]
 dy = values[:,3]
 
-labels = np.loadtxt("dist/temp/table.txt", dtype="str")
+labels = np.loadtxt(txtFileName, dtype="str")
 print(labels)
 labelx = labels[0,0]
 labely = labels[0,1]
@@ -58,12 +60,10 @@ ax1.set_xlabel(labelx)
 ax1.set_ylabel(labely)
 
 # Save plot in file
+pngFileName = "dist/temp/" + sys.argv[1] + ".png" if len(sys.argv) > 1 else "dist/temp/plot.png"
 
-print sys.argv
-fileName = "dist/temp/" + sys.argv[1] if len(sys.argv) > 1 else "dist/temp/plot.png"
+if os.path.isfile(pngFileName):
+  os.remove(pngFileName)
 
-if os.path.isfile(fileName):
-  os.remove(fileName)
-
-plt.savefig(fileName)
+plt.savefig(pngFileName)
 # plt.show()

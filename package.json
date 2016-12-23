@@ -19,7 +19,7 @@
     "dev": "npm run cp:index && NODE_ENV=local npm run build ",
     "start": "node app.js",
     "startd": "nodemon app.js",
-    "test": "mocha test/ --recursive",
+    "test": "NODE_ENV=test mocha test/ --recursive",
     "windev": "npm run cp:index && set NODE_ENV=local&& npm run build",
     "rm:temp": "rm dist/temp/*.txt && rm dist/temp/*.png"
   },

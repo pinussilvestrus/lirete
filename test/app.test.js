@@ -19,10 +19,10 @@ describe('React application tests', function () {
     this.server.close(done);
   });
 
-  it('starts and shows the index page', function () {
+  it('starts and shows the system_status_page', function () {
     return new Promise((resolve, reject) => {
       chai.request(app)
-        .get('/')
+        .get('/api/system_info')
         .end((err, res) => {
           assert.equal(res.statusCode, 200);
           resolve();

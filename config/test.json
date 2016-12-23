@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 3031,
+  "port": 3002,
   "public": "../public/",
   "auth": {
     "token": {

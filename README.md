@@ -1,6 +1,8 @@
 # lirete
 Web Plotter with linreg.py
 
+![Travis Status](https://travis-ci.org/pinussilvestrus/lirete.svg?branch=master)
+
 # Requirements
 
 * [node.js](https://nodejs.org/en/)

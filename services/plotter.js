@@ -54,7 +54,7 @@ module.exports = function () {
     PythonShell.run('services/py/linregwithtxt.py', options, (err) => {
       if (err) {
         logger.error(err);
-        return res.send(406).json({message: 'Failed executing python script', err: err});
+        return res.status(406).send({error: err});
       }
       logger.info('Python script for plotting finished');
       return res.status(200).json({

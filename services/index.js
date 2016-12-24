@@ -1,5 +1,6 @@
 'use strict';
 const plotter = require('./plotter');
+const tableData = require('./tableData');
 
 module.exports = function () {
   const app = this;
@@ -9,4 +10,5 @@ module.exports = function () {
   });
 
   app.configure(plotter);
+  app.configure(tableData);
 };

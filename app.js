@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const configuration = require('feathers-configuration');
 const services = require('./services/');
+const Sequelize = require('sequelize');
 
 var app = feathers();
 
@@ -18,6 +19,7 @@ app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
 
+
 app.logger = logger;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,6 +28,14 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 app.use(serveStatic(path.join(__dirname, 'public')));
+
+// sqlite db
+const sequelize = new Sequelize('sequelize', '', '', {
+  dialect: 'sqlite',
+  storage: path.join(__dirname, 'db', 'db.sqlite'),
+  logging: false
+});
+app.set('sequelize', sequelize);
 
 // backend
 app.configure(services);

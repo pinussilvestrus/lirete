@@ -14,9 +14,11 @@
     "url": "git+https://github.com/pinussilvestrus/lirete.git"
   },
   "scripts": {
+    "setproduction": "NODE_ENV=production",
     "build": "webpack -d --watch",
     "cp:index": "cp src/static/index.html dist/",
     "dev": "npm run cp:index && NODE_ENV=local npm run build ",
+    "production": "NODE_ENV=production npm run cp:index && webpack -d",
     "start": "node app.js",
     "startd": "nodemon app.js",
     "test": "NODE_ENV=test mocha test/ --recursive",

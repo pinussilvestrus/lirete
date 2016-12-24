@@ -11,8 +11,7 @@ export default {
         Promise.reject("No image was rendered!");
       })
       .catch(error => {
-        console.log(error);
-        location.reload();
+        console.log(error); // todo: show error message ui
       });
   }
 };

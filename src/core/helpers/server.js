@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
 import rp from 'request-promise';
+import Config from '../helpers/config';
 
 class Server {
 	constructor() {
@@ -7,7 +8,7 @@ class Server {
 
   plotTable(table) {
     let options = {
-      uri: 'http://localhost:3001/api/plotter',
+      uri: `${Config.server}/api/plotter`,
       method: 'POST',
       headers: {
         'User-Agent': 'Request-Promise'

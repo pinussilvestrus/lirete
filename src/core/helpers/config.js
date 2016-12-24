@@ -3,19 +3,18 @@ import fs from 'fs';
 class Config {
 	constructor(env) {
 		const config = this.config();
+    if (!env) return {server: 'http://lirete.niklaskiefer.de'};
+    
 		return config[env];
 	}
 
 	config() {
 		return {
 			local: {
-				server: 'http://localhost:3030'
-			},
-			staging: {
-				server: 'https://school.langl.eu:3030'
+				server: 'http://localhost:3001'
 			},
 			production: {
-				server: 'https://schul-cloud.org:8080'
+				server: 'http://lirete.niklaskiefer.de'
 			}
 		};
 	}

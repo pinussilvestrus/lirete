@@ -2,6 +2,7 @@
 const PythonShell = require('python-shell');
 const logger = require('winston-color');
 const randomstring = require("randomstring");
+const FythonService = require('feathers-python');
 
 const fs = require('fs');
 module.exports = function () {
@@ -33,6 +34,9 @@ module.exports = function () {
     });
   };
 
+  // Todo: enter this in own module
+  let pythonService = new FythonService({scriptPath: "services/py/linregwithtxt.py"});
+
   app.post('/api/plotter', (req, res) => {
     if (!req.body.header || !req.body.body) return res.status(400).json({message: "Bad Request"});
 
@@ -51,17 +55,19 @@ module.exports = function () {
       args: [pngfileName, txtfileName]
     };
 
-    PythonShell.run('services/py/linregwithtxt.py', options, (err) => {
-      if (err) {
-        logger.error(err);
-        return res.status(406).send({error: err});
-      }
+    pythonService.create({
+      param1: pngfileName,
+      param2: txtfileName
+    }).then(result => {
       logger.info('Python script for plotting finished');
       return res.status(200).json({
         graph: `temp/${pngfileName}.png`,
         table: `temp/${txtfileName}.txt`,
         message: "Successfully plotted graph"
       });
+    }).catch(err => {
+      logger.error(err);
+      return res.status(406).send({error: err});
     });
   });
 };

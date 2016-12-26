@@ -1,5 +1,4 @@
 'use strict';
-const PythonShell = require('python-shell');
 const logger = require('winston-color');
 const randomstring = require("randomstring");
 const FythonService = require('feathers-python');

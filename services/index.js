@@ -9,6 +9,6 @@ module.exports = function () {
     return res.sendStatus(200);
   });
 
-  app.configure(plotter);
   app.configure(tableData);
+  app.configure(plotter);
 };

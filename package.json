@@ -61,7 +61,6 @@
     "node-sass": "^3.13.1",
     "nodemon": "^1.11.0",
     "postcss-loader": "^1.0.0",
-    "python-shell": "^0.4.0",
     "randomstring": "^1.1.5",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

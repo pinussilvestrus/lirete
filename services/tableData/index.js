@@ -11,8 +11,8 @@ module.exports = function(){
   const options = {
     Model: tableData(app.get('sequelize')),
     paginate: {
-      default: 5,
-      max: 25
+      default: 100,
+      max: 200
     }
   };
 

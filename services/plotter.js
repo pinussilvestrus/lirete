@@ -7,6 +7,7 @@ const FythonService = require('feathers-python');
 const fs = require('fs');
 module.exports = function () {
   const app = this;
+  let tableDataService = app.service("api/tabledata");
 
   /** writing whole data to temp-file for better debugging/printing later on **/
   const writeTableToFile = (fileName, tableHead, tableBody) => {
@@ -39,6 +40,12 @@ module.exports = function () {
 
   app.post('/api/plotter', (req, res) => {
     if (!req.body.header || !req.body.body) return res.status(400).json({message: "Bad Request"});
+
+    // save in db for statistics
+    tableDataService.create({
+      header: req.body.header,
+      body: req.body.body
+    });
 
     let txtfileName = randomstring.generate({
       length: 12,

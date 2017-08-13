@@ -20,6 +20,8 @@ class Server {
       json: true
     };
 
+    console.log(options.body);
+
     return rp(options)
       .then(function (result) {
         return Promise.resolve(result);

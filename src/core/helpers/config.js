@@ -3,7 +3,7 @@ import fs from 'fs';
 class Config {
 	constructor(env) {
 		const config = this.config();
-    if (!env) return {server: 'http://lirete.niklaskiefer.de'};
+    if (!env) return {server: 'http://31.14.134.198:3001'};
     
 		return config[env];
 	}
@@ -14,7 +14,7 @@ class Config {
 				server: 'http://localhost:3001'
 			},
 			production: {
-				server: 'http://lirete.niklaskiefer.de'
+				server: 'http://31.14.134.198:3001'
 			}
 		};
 	}

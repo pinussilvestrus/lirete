@@ -3,6 +3,7 @@ const feathers = require('feathers');
 const serveStatic = require('feathers').static;
 const path = require('path');
 const favicon = require('serve-favicon');
+const cors = require('cors');
 const logger = require('winston-color');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -17,8 +18,6 @@ app.configure(configuration(path.join(__dirname, '..')));
 var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
-
-
 
 app.logger = logger;
 app.use(bodyParser.json());
@@ -45,6 +44,9 @@ app.use(serveStatic(__dirname + '/dist'));
 app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
+
+// cors
+app.use(cors({origin: `http://${app.get('host')}:${app.get('port')}`}));
 
 // start the server
 const server = app.listen(app.get('port'));

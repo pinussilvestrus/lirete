@@ -1,5 +1,7 @@
 #immerueber Eingabeauffordung ausfuehren!!
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec  # for unequal plot boxes
 import os as os
@@ -7,7 +9,6 @@ import sys as sys
 from linfit import linfit
 
 # data set for linear fitting
-
 txtFileName = "dist/temp/" + sys.argv[2] + ".txt" if len(sys.argv) > 2 else "dist/temp/table.txt"
 
 values = np.loadtxt(txtFileName, skiprows=1)

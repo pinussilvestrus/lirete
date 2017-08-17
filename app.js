@@ -25,6 +25,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.options('*', cors());
+app.use(cors());
+
 app.use(cookieParser());
 app.use(serveStatic(path.join(__dirname, 'public')));
 
@@ -45,8 +48,6 @@ app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
-// cors
-app.use(cors({origin: `http://${app.get('host')}:${app.get('port')}`}));
 
 // start the server
 const server = app.listen(app.get('port'));

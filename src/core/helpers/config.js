@@ -14,7 +14,7 @@ class Config {
 				server: 'http://localhost:3001'
 			},
 			production: {
-				server: 'http://lireteapi.niklaskiefer.de'
+				server: 'http://lirete.niklaskiefer.de'
 			}
 		};
 	}

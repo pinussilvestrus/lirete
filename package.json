@@ -18,7 +18,7 @@
     "cp:index": "cp src/static/index.html dist/",
     "dev": "npm run cp:index && NODE_ENV=local npm run build ",
     "setup:python": "python -m pip install numpy",
-    "production": "NODE_ENV=production npm run cp:index && webpack -d",
+    "production": "NODE_ENV=production npm run cp:index && webpack",
     "start": "node app.js",
     "startd": "nodemon app.js",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register,js:./test/css-modules-compiler.js test/ --recursive",
